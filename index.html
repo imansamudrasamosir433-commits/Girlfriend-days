@@ -32,7 +32,6 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* Container Kartu Utama */
     .card {
       background: rgba(255, 255, 255, 0.88);
       backdrop-filter: blur(10px);
@@ -78,7 +77,6 @@
       background: #e76f51;
     }
 
-    /* Content Area */
     .content-screen {
       display: none;
       animation: fadeIn 1s ease forwards;
@@ -96,11 +94,10 @@
       margin-bottom: 15px;
     }
 
-    /* Slideshow Container */
     .slideshow-container {
       position: relative;
       width: 100%;
-      height: 280px;
+      height: 300px;
       border-radius: 14px;
       overflow: hidden;
       margin: 15px 0 20px 0;
@@ -123,7 +120,6 @@
       opacity: 1;
     }
 
-    /* Message Box */
     .message-box {
       background: #fffdf9;
       border-radius: 12px;
@@ -137,7 +133,6 @@
       position: relative;
     }
 
-    /* Floating Hearts */
     .heart {
       position: fixed;
       font-size: 20px;
@@ -165,7 +160,7 @@
 </head>
 <body>
 
-  <!-- Audio Musik -->
+  <!-- Audio Musik (Ganti link src jika ada lagu favorit spesifik) -->
   <audio id="bgMusic" loop>
     <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg" />
   </audio>
@@ -173,23 +168,26 @@
   <div class="card">
     <!-- Screen 1: Layar Depan -->
     <div class="welcome-screen" id="welcomeScreen">
-      <h1>Halo Cantik 💕</h1>
+      <h1>Halo Dede Yoyo ku Sayanggg🤍</h1>
       <p>Ada surat kecil khusus buat kamu di Hari Girlfriend Day ini...</p>
       <button class="btn-open" onclick="openSurat()">Buka Surat 💌</button>
     </div>
 
     <!-- Screen 2: Isi Pesan & Slideshow Foto -->
     <div class="content-screen" id="contentScreen">
-      <h2 class="title">Happy Girlfriend Day! ✨</h2>
+      <h2 class="title">Happy Girlfriend Day! 🤍✨</h2>
       
-      <!-- Frame Slider Foto (Ganti URL foto-foto di bawah) -->
+      <!-- Frame Slider 9 Foto Dropbox -->
       <div class="slideshow-container">
-        <img class="slide active" src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=600&auto=format&fit=crop" alt="Foto 1">
-        <img class="slide" src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600&auto=format&fit=crop" alt="Foto 2">
-        <img class="slide" src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600&auto=format&fit=crop" alt="Foto 3">
-        <img class="slide" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&auto=format&fit=crop" alt="Foto 4">
-        <img class="slide" src="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?w=600&auto=format&fit=crop" alt="Foto 5">
-        <img class="slide" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&auto=format&fit=crop" alt="Foto 6">
+        <img class="slide active" src="https://www.dropbox.com/scl/fi/bcbc9z2x1r518w63sv85v/IMG-20260527-WA0024.jpg?rlkey=jp5r4n9zdbruajwjd62n6rx54&st=rs5mtr0p&raw=1" alt="Foto 1">
+        <img class="slide" src="https://www.dropbox.com/scl/fi/mt1xj7lbhzrenyi8ayscy/IMG-20260527-WA0071.jpg?rlkey=pgbxx3yh0sof6tjazmlxmqzwk&st=pnvnckms&raw=1" alt="Foto 2">
+        <img class="slide" src="https://www.dropbox.com/scl/fi/p3gf3w2uehybousdkwxg3/IMG-20260527-WA0102.jpg?rlkey=pqa5xxewtgwcstumdar3ys06c&st=xzlsq4gd&raw=1" alt="Foto 3">
+        <img class="slide" src="https://www.dropbox.com/scl/fi/msuqf68zxwxtmeu6wqgbv/IMG-20260529-WA0032.jpg?rlkey=8289u18006a9wq5x7z9ugvsnh&st=yby0hce6&raw=1" alt="Foto 4">
+        <img class="slide" src="https://www.dropbox.com/scl/fi/x7sr7m7jmc4z4qfcm94hh/IMG-20260531-WA0023.jpg?rlkey=o4xw8uac0plrxdfwjqmy51kz8&st=zgfi836l&raw=1" alt="Foto 5">
+        <img class="slide" src="https://www.dropbox.com/scl/fi/j7851cybz610y0n7ozy5s/IMG-20260601-WA0036.jpg?rlkey=1exx5sdptaqavt169vgc6urof&st=xsxxpdga&raw=1" alt="Foto 6">
+        <img class="slide" src="https://www.dropbox.com/scl/fi/rczi4u49i4yr1y4cmdenc/IMG-20260213-WA0007.jpg?rlkey=ellkpck1z1awnzlbcenb4csuz&st=z4uc3p5a&raw=1" alt="Foto 7">
+        <img class="slide" src="https://www.dropbox.com/scl/fi/88l4y7w43f91ouy7d7sx8/IMG-20260607-WA0096.jpg?rlkey=ek9pzkay55ueqs4niz4ouwdps&st=n8tm7t4e&raw=1" alt="Foto 8">
+        <img class="slide" src="https://www.dropbox.com/scl/fi/wkg82ik9z1etmbootei36/1777359692836.jpg?rlkey=04ch30x2acjm36geeejqsvj94&st=qt54k2z5&raw=1" alt="Foto 9">
       </div>
 
       <!-- Kotak Pesan Animasi Ketik -->
@@ -197,7 +195,7 @@
         <p id="typewriter"></p>
       </div>
 
-      <button class="btn-open" onclick="kirimCinta()">Makasih Sayang 💖</button>
+      <button class="btn-open" onclick="kirimCinta()">Makasih Sayang 🤍🫶</button>
 
       <div class="music-badge">
         🎵 Playing background music...
@@ -206,8 +204,8 @@
   </div>
 
   <script>
-    const pesanUcapan = "Selamat National Girlfriend Day ya! Terima kasih udah selalu hadir, senyum kamu selalu jadi hal favoritku tiap hari. Maaf ya cuma bisa kasih website sederhana ini, tapi rasa sayang aku ke kamu beneran ga sederhana. Love you always! ✨❤️";
-
+    // Ucapannya bisa disesuaikan kalau mau kata-kata pribadi
+    const pesanUcapan = "Selamat Hari Girlfriend Day, ya. Terima kasih sudah menjadi tempat paling nyaman buat aku. Aku janji akan terus menjaga komitmen ini dan berjalan beriringan sama kamu. Aku selalu ada buat kamu, dan bahkan di saat kamu butuh waktu untuk sendiri, aku akan selalu sabar nungguin kamu. Terima kasih sudah bertahan sejauh ini ✨🤍🫂🫶.
     let index = 0;
     let currentSlide = 0;
 
@@ -221,7 +219,7 @@
       typeWriter();
       setInterval(createHeart, 400);
       
-      // Jalankan slider foto otomatis berganti tiap 3000ms (3 detik)
+      // Pergantian foto otomatis tiap 3 detik
       setInterval(nextSlide, 3000);
     }
 
@@ -254,7 +252,7 @@
     }
 
     function kirimCinta() {
-      alert("I love you more! ❤️");
+      alert("I love you more! 🤍");
     }
   </script>
 </body>
