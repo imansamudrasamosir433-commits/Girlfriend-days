@@ -160,7 +160,7 @@
 </head>
 <body>
 
-  <!-- Audio Musik (Ganti link src jika ada lagu favorit spesifik) -->
+  <!-- Audio Musik -->
   <audio id="bgMusic" loop>
     <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg" />
   </audio>
@@ -204,8 +204,11 @@
   </div>
 
   <script>
-    // Ucapannya bisa disesuaikan kalau mau kata-kata pribadi
-    const pesanUcapan = "Selamat Hari Girlfriend Day, ya. Terima kasih sudah menjadi tempat paling nyaman buat aku. Aku janji akan terus menjaga komitmen ini dan berjalan beriringan sama kamu. Aku selalu ada buat kamu, dan bahkan di saat kamu butuh waktu untuk sendiri, aku akan selalu sabar nungguin kamu. Terima kasih sudah bertahan sejauh ini ✨🤍🫂🫶.
+    const pesanUcapan = "Selamat Hari Girlfriend Day, ya. Terima kasih sudah menjadi tempat paling nyaman buat aku. Aku janji akan terus menjaga komitmen ini dan berjalan beriringan sama kamu. Aku selalu ada buat kamu, dan bahkan di saat kamu butuh waktu untuk sendiri, aku akan selalu sabar nungguin kamu. Terima kasih sudah bertahan sejauh ini ✨🤍🫂🫶.";
+    
+    // PERBAIKAN: Memecah string menjadi Array supaya karakter emoji tidak rusak saat diketik
+    const pesanArray = [...pesanUcapan];
+    
     let index = 0;
     let currentSlide = 0;
 
@@ -231,8 +234,9 @@
     }
 
     function typeWriter() {
-      if (index < pesanUcapan.length) {
-        document.getElementById("typewriter").innerHTML += pesanUcapan.charAt(index);
+      if (index < pesanArray.length) {
+        // PERBAIKAN: Menggunakan pesanArray[index] agar emoji dibaca utuh
+        document.getElementById("typewriter").innerHTML += pesanArray[index];
         index++;
         setTimeout(typeWriter, 45);
       }
@@ -241,7 +245,8 @@
     function createHeart() {
       const heart = document.createElement("div");
       heart.classList.add("heart");
-      heart.innerHTML = "🌸";
+      // Menyesuaikan bunga/hati melayang dengan warna tema
+      heart.innerHTML = "🤍"; 
       heart.style.left = Math.random() * 100 + "vw";
       heart.style.animationDuration = Math.random() * 2 + 3 + "s";
       document.body.appendChild(heart);
