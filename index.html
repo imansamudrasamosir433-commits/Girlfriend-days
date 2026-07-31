@@ -78,7 +78,7 @@
       background: #e76f51;
     }
 
-    /* Content Area (Hidden awal) */
+    /* Content Area */
     .content-screen {
       display: none;
       animation: fadeIn 1s ease forwards;
@@ -96,10 +96,11 @@
       margin-bottom: 15px;
     }
 
-    /* Photo Frame Rectangular */
-    .photo-frame {
+    /* Slideshow Container */
+    .slideshow-container {
+      position: relative;
       width: 100%;
-      height: 260px;
+      height: 280px;
       border-radius: 14px;
       overflow: hidden;
       margin: 15px 0 20px 0;
@@ -107,10 +108,19 @@
       border: 4px solid #fff;
     }
 
-    .photo-frame img {
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .slide.active {
+      opacity: 1;
     }
 
     /* Message Box */
@@ -142,7 +152,6 @@
       100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
     }
 
-    /* Simple Music Badge */
     .music-badge {
       font-size: 0.8rem;
       color: #8d99ae;
@@ -156,28 +165,31 @@
 </head>
 <body>
 
-  <!-- Background Music -->
-  <!-- Ganti link audio di bawah dengan lagu pilihanmu (.mp3) -->
+  <!-- Audio Musik -->
   <audio id="bgMusic" loop>
     <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg" />
   </audio>
 
   <div class="card">
-    <!-- Screen 1: Halaman Depan -->
+    <!-- Screen 1: Layar Depan -->
     <div class="welcome-screen" id="welcomeScreen">
       <h1>Halo Cantik 💕</h1>
       <p>Ada surat kecil khusus buat kamu di Hari Girlfriend Day ini...</p>
       <button class="btn-open" onclick="openSurat()">Buka Surat 💌</button>
     </div>
 
-    <!-- Screen 2: Isi Pesan -->
+    <!-- Screen 2: Isi Pesan & Slideshow Foto -->
     <div class="content-screen" id="contentScreen">
       <h2 class="title">Happy Girlfriend Day! ✨</h2>
       
-      <!-- Frame Foto Sederhana -->
-      <div class="photo-frame">
-        <!-- Ganti src dengan link foto pacarmu -->
-        <img src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=600&auto=format&fit=crop" alt="Foto Pacar">
+      <!-- Frame Slider Foto (Ganti URL foto-foto di bawah) -->
+      <div class="slideshow-container">
+        <img class="slide active" src="https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=600&auto=format&fit=crop" alt="Foto 1">
+        <img class="slide" src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600&auto=format&fit=crop" alt="Foto 2">
+        <img class="slide" src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=600&auto=format&fit=crop" alt="Foto 3">
+        <img class="slide" src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&auto=format&fit=crop" alt="Foto 4">
+        <img class="slide" src="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?w=600&auto=format&fit=crop" alt="Foto 5">
+        <img class="slide" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=600&auto=format&fit=crop" alt="Foto 6">
       </div>
 
       <!-- Kotak Pesan Animasi Ketik -->
@@ -194,39 +206,44 @@
   </div>
 
   <script>
-    // Teks Ucapan (Ganti sesuai pesan pribadi kamu)
     const pesanUcapan = "Selamat National Girlfriend Day ya! Terima kasih udah selalu hadir, senyum kamu selalu jadi hal favoritku tiap hari. Maaf ya cuma bisa kasih website sederhana ini, tapi rasa sayang aku ke kamu beneran ga sederhana. Love you always! ✨❤️";
 
     let index = 0;
+    let currentSlide = 0;
 
     function openSurat() {
-      // Sembunyikan layar awal, tampilkan isi
       document.getElementById("welcomeScreen").style.display = "none";
       document.getElementById("contentScreen").style.display = "block";
 
-      // Putar Musik
       const music = document.getElementById("bgMusic");
       music.play().catch(e => console.log("Autoplay dibatasi browser"));
 
-      // Jalankan Efek Ketik
       typeWriter();
-
-      // Buat Animasi Hati
       setInterval(createHeart, 400);
+      
+      // Jalankan slider foto otomatis berganti tiap 3000ms (3 detik)
+      setInterval(nextSlide, 3000);
+    }
+
+    function nextSlide() {
+      const slides = document.querySelectorAll('.slide');
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
     }
 
     function typeWriter() {
       if (index < pesanUcapan.length) {
         document.getElementById("typewriter").innerHTML += pesanUcapan.charAt(index);
         index++;
-        setTimeout(typeWriter, 45); // Kecepatan mengetik (ms)
+        setTimeout(typeWriter, 45);
       }
     }
 
     function createHeart() {
       const heart = document.createElement("div");
       heart.classList.add("heart");
-      heart.innerHTML = "🌸"; // Bisa diganti 💖 atau ✨
+      heart.innerHTML = "🌸";
       heart.style.left = Math.random() * 100 + "vw";
       heart.style.animationDuration = Math.random() * 2 + 3 + "s";
       document.body.appendChild(heart);
@@ -238,8 +255,6 @@
 
     function kirimCinta() {
       alert("I love you more! ❤️");
-      // Bisa diarahkan ke WhatsApp kalau mau:
-      // window.location.href = "https://wa.me/nomorhp?text=Makasih%20sayang!";
     }
   </script>
 </body>
